@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ghiduri și resurse — Being Ecosystem Catalyst</title>
+<meta name="description" content="Ghiduri de sănătate mintală pentru elevi și tineri, profesori, părinți și organizații — aceleași subiecte, patru voci diferite." />
+<link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" />
+<style>
+  body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); text-wrap: pretty; }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent-600); }
+  html { scroll-behavior: smooth; }
+  @keyframes breathe { 0%, 100% { transform: scale(0.72); opacity: 0.5; } 50% { transform: scale(1); opacity: 1; } }
+  .img-placeholder { display: flex; align-items: center; justify-content: center; text-align: center; padding: 18px; box-sizing: border-box; background: var(--color-neutral-200); color: color-mix(in srgb, var(--color-text) 55%, transparent); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 20px; }
+  #panic { position: fixed; inset: 0; z-index: 90; background: var(--color-bg); overflow: auto; display: none; align-items: flex-start; justify-content: center; padding: clamp(20px, 5vw, 72px); }
+  #panic > div { margin: auto; }
+  #panic .panic-head { position: sticky; top: 0; z-index: 2; background: var(--color-bg); padding-bottom: 14px; }
+  #panic[data-open] { display: flex; }
+</style>
+</head>
+<body>
+
+<div style="background: var(--color-bg); min-height: 100vh;">
+
+<nav class="nav" style="padding-inline: max(clamp(20px,5vw,72px), calc((100% - 1200px) / 2 + clamp(20px,5vw,72px))); position: sticky; top: 0; z-index: 40; background: var(--color-bg);">
+  <span class="nav-brand" style="white-space: nowrap;"><a href="index.html" style="color: inherit; text-decoration: none;">Being Ecosystem Catalyst</a></span>
+  <a href="index.html" style="white-space: nowrap;">Acasă</a>
+  <a href="#elevi" aria-current="location" style="white-space: nowrap; color: var(--color-accent);">Resurse</a>
+  <a href="retea.html" style="white-space: nowrap;">Rețea</a>
+  <a href="index.html#standarde" style="white-space: nowrap;">Standarde</a>
+  <button type="button" class="btn btn-primary panic-open" style="white-space: nowrap;">Am nevoie de ajutor acum</button>
+</nav>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px);">
+
+  <section style="padding: 84px 0 56px;">
+    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px; font-feature-settings: 'tnum' 1;">Ghiduri și resurse</span>
+    <h1 style="font-family: var(--font-heading); font-weight: 400; font-size: clamp(40px, 5.2vw, 72px); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 0 -0.042em;">
+      <span style="display: block;">Alege de unde privești.</span>
+      <span style="display: block;">Restul e scris pentru tine.</span>
+    </h1>
+    <p style="font-size: 17px; line-height: 28px; max-width: 58ch; margin: 42px 0 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);">Aceleași subiecte, patru voci diferite. Materialele pentru tineri sunt scrise ca o conversație; cele pentru organizații și autorități, ca instrumente de lucru pe standarde.</p>
+  </section>
+
+  <nav aria-label="Sări la secțiune" style="position: sticky; top: 60px; z-index: 30; background: var(--color-bg); border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider); padding: 14px 0; display: flex; gap: 28px; flex-wrap: wrap; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">
+    <a href="#elevi">Elevi și tineri</a>
+    <a href="#profesori">Profesori</a>
+    <a href="#parinti">Părinți</a>
+    <a href="#organizatii">Organizații și autorități</a>
+  </nav>
+
+  <section id="elevi" style="padding: 70px 0;">
+    <div style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px clamp(24px, 5vw, 72px); align-items: start;">
+      <div>
+        <h2 style="font-family: var(--font-heading); font-weight: 400; font-size: 40px; line-height: 44px; letter-spacing: -0.008em; margin: 0 0 0 -0.042em;">Elevi și tineri</h2>
+        <p style="font-size: 17px; line-height: 28px; margin: 24px 0 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);">Poți citi pe sărituri, poți începe cu un test scurt, poți doar să te uiți. Nimic de aici nu îți pune o etichetă și nimic nu ajunge la școala ta.</p>
+        <figure class="plate" style="margin: 42px 0 0;">
+          <!-- Înlocuiește cu: <img src="assets/nume-imagine.jpg" alt="…" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;" /> -->
+          <div class="img-placeholder" style="width: 100%; aspect-ratio: 4 / 3;">Fotografie: tineri într-un atelier</div>
+        </figure>
+      </div>
+      <div style="display: grid; gap: 0;">
+        <article style="padding: 24px 0; border-top: 1px solid var(--color-divider);">
+          <span class="tag tag-outline" style="font-feature-settings: 'tnum' 1;">Autoevaluare</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 14px 0 0;">Cum stau, de fapt? — 10 întrebări</h3>
+          <p style="font-size: 15.5px; line-height: 28px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Un test scurt, confidențial și fără diagnostic. La final îți arătăm trei direcții: să înțelegi mai bine, să vorbești cu un specialist, sau să intri într-un grup care face lucruri.</p>
+          <a href="#elevi" style="display: inline-block; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Începe testul</a>
+        </article>
+        <article style="padding: 24px 0; border-top: 1px solid var(--color-divider);">
+          <span class="tag tag-outline" style="font-feature-settings: 'tnum' 1;">Ghid</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 14px 0 0;">Anxietatea, pe limba noastră</h3>
+          <p style="font-size: 15.5px; line-height: 28px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Ce se întâmplă în corp, de ce nu e „doar în capul tău” și ce ajută înainte de examen, în pauză, la 2 noaptea.</p>
+          <a href="#elevi" style="display: inline-block; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Citește ghidul</a>
+        </article>
+        <article style="padding: 24px 0; border-top: 1px solid var(--color-divider);">
+          <span class="tag tag-outline" style="font-feature-settings: 'tnum' 1;">Ghid</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 14px 0 0;">Un prieten îmi spune ceva greu. Ce fac?</h3>
+          <p style="font-size: 15.5px; line-height: 28px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Ce să spui, ce să nu spui, și când trebuie să implici un adult — chiar dacă ți s-a cerut să nu spui nimănui.</p>
+          <a href="#elevi" style="display: inline-block; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Citește ghidul</a>
+        </article>
+        <article style="padding: 24px 0; border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider);">
+          <span class="tag tag-outline" style="font-feature-settings: 'tnum' 1;">Oportunități</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 14px 0 0;">Voluntariat și activități în județul tău</h3>
+          <p style="font-size: 15.5px; line-height: 28px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Grupuri, cluburi și proiecte din rețea. Nu terapie — apartenență, ceea ce ajută mai mult decât credem.</p>
+          <a href="retea.html" style="display: inline-block; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Caută pe hartă</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height: 1px; border: 0; margin: 0; background: var(--color-divider);" />
+
+  <section id="profesori" style="padding: 70px 0;">
+    <h2 style="font-family: var(--font-heading); font-weight: 400; font-size: 40px; line-height: 44px; letter-spacing: -0.008em; margin: 0 0 0 -0.042em;">Profesori</h2>
+    <p style="font-size: 17px; line-height: 28px; max-width: 58ch; margin: 24px 0 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);">Două nevoi, tratate separat: ce faci pentru elevii tăi și ce faci pentru tine. A doua nu e un bonus.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 42px;">
+      <div class="card" style="padding: 28px;">
+        <span class="card-kicker" style="font-feature-settings: 'tnum' 1;">Pentru elevii mei</span>
+        <ul style="margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 14px;">
+          <li style="font-size: 15.5px; line-height: 24px;"><a href="#profesori">Activități de învățare socio-emoțională, pe nivel de vârstă</a></li>
+          <li style="font-size: 15.5px; line-height: 24px;"><a href="#profesori">Semnalele timpurii: ce observ la clasă</a></li>
+          <li style="font-size: 15.5px; line-height: 24px;"><a href="#profesori">Ce fac când un elev are nevoie de mai mult — protocol în 5 pași</a></li>
+          <li style="font-size: 15.5px; line-height: 24px;"><a href="#profesori">Cum vorbesc cu părinții fără să alarmez</a></li>
+        </ul>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <span class="card-kicker" style="font-feature-settings: 'tnum' 1;">Pentru mine</span>
+        <ul style="margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 14px;">
+          <li style="font-size: 15.5px; line-height: 24px;"><a href="#profesori">Prevenția burnout-ului: ce e realist într-un an școlar</a></li>
+          <li style="font-size: 15.5px; line-height: 24px;"><a href="#profesori">Comunitatea de practică — întâlniri lunare</a></li>
+          <li style="font-size: 15.5px; line-height: 24px;"><a href="#profesori">Limite sănătoase cu elevii care se sprijină pe tine</a></li>
+        </ul>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <span class="card-kicker" style="font-feature-settings: 'tnum' 1;">Aduc pe cineva în școală</span>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 18px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Organizații din rețea care livrează programe la nivel de clasă sau de școală, cu nivelul lor de conformitate afișat.</p>
+        <a class="btn btn-primary" href="retea.html" style="margin-top: 18px; text-decoration: none;">Caută în județul meu</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height: 1px; border: 0; margin: 0; background: var(--color-divider);" />
+
+  <section id="parinti" style="padding: 70px 0;">
+    <h2 style="font-family: var(--font-heading); font-weight: 400; font-size: 40px; line-height: 44px; letter-spacing: -0.008em; margin: 0 0 0 -0.042em;">Părinți</h2>
+    <p style="font-size: 17px; line-height: 28px; max-width: 58ch; margin: 24px 0 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);">Dacă ai ajuns aici pentru că ceva nu e în regulă: ai făcut deja partea grea. Mai departe mergem pe trei pași — ce observi, ce ar putea însemna, unde mergeți.</p>
+    <ol style="margin: 42px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 56px;">
+      <li style="padding: 24px 0; border-top: 1px solid var(--color-divider);">
+        <span style="font-family: var(--font-heading); font-size: 20px; line-height: 28px; color: var(--color-accent-700); font-feature-settings: 'tnum' 1;">01</span>
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 8px 0 0;">Ce observ</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">O listă de schimbări care merită atenție — somn, școală, prieteni, apetit, corp — și care nu sunt „doar adolescența”.</p>
+        <a href="#parinti" style="display: inline-block; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Vezi lista</a>
+      </li>
+      <li style="padding: 24px 0; border-top: 1px solid var(--color-divider);">
+        <span style="font-family: var(--font-heading); font-size: 20px; line-height: 28px; color: var(--color-accent-700); font-feature-settings: 'tnum' 1;">02</span>
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 8px 0 0;">Orientare, nu etichetă</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Câteva întrebări care ne ajută să înțelegem cât de urgent e și către ce tip de sprijin are sens să mergeți. Nu e un diagnostic.</p>
+        <a href="#parinti" style="display: inline-block; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Începe orientarea</a>
+      </li>
+      <li style="padding: 24px 0; border-top: 1px solid var(--color-divider);">
+        <span style="font-family: var(--font-heading); font-size: 20px; line-height: 28px; color: var(--color-accent-700); font-feature-settings: 'tnum' 1;">03</span>
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 8px 0 0;">Unde mergem</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Servicii și specialiști din județul vostru, cu ce oferă fiecare și cum îi contactați.</p>
+        <a href="retea.html" style="display: inline-block; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Caută pe hartă</a>
+      </li>
+    </ol>
+    <div class="card" style="padding: 28px; margin-top: 42px; border-color: var(--color-accent);">
+      <span class="card-kicker" style="color: var(--color-accent-700); font-feature-settings: 'tnum' 1;">Traseu de urgență</span>
+      <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 10px 0 0;">Dacă există semne de risc imediat</h3>
+      <p style="font-size: 15.5px; line-height: 28px; margin: 8px 0 0; max-width: 58ch; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Autovătămare, gânduri de suicid, comportament periculos: nu așteptați o programare. Sună la 112 sau folosește butonul de ajutor imediat din colțul paginii.</p>
+      <button type="button" class="btn btn-primary panic-open" style="margin-top: 18px;">Deschide ajutorul imediat</button>
+    </div>
+  </section>
+
+  <hr class="hr" style="height: 1px; border: 0; margin: 0; background: var(--color-divider);" />
+
+  <section id="organizatii" style="padding: 70px 0;">
+    <h2 style="font-family: var(--font-heading); font-weight: 400; font-size: 40px; line-height: 44px; letter-spacing: -0.008em; margin: 0 0 0 -0.042em;">Organizații și autorități</h2>
+    <p style="font-size: 17px; line-height: 28px; max-width: 62ch; margin: 24px 0 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);">Aici standardele nu mai lucrează în fundal — sunt materialul de lucru. Documentația e organizată pe cele trei părți ale ghidului de excelență, plus instrumentele practice.</p>
+    <table class="table" style="width: 100%; margin-top: 42px;">
+      <thead>
+        <tr>
+          <th scope="col">Resursă</th>
+          <th scope="col">Ce conține</th>
+          <th scope="col">Pentru</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#organizatii">Standardele de Excelență — Partea I</a></td>
+          <td>Dimensiunea conceptuală: criteriile de calitate și de ce arată așa</td>
+          <td>ONG, școală, autoritate</td>
+        </tr>
+        <tr>
+          <td><a href="#organizatii">Standardele de Excelență — Partea II</a></td>
+          <td>Bune practici de referință și mecanismul de scoring pe criterii</td>
+          <td>ONG, școală</td>
+        </tr>
+        <tr>
+          <td><a href="#organizatii">Standardele de Excelență — Partea III</a></td>
+          <td>Servicii accesibile tinerilor din afara structurilor formale</td>
+          <td>Autoritate locală, DSP</td>
+        </tr>
+        <tr>
+          <td><a href="#organizatii">De unde încep — parcurs pas cu pas</a></td>
+          <td>Cum construiești o intervenție de la zero, pe standarde</td>
+          <td>ONG, școală</td>
+        </tr>
+        <tr>
+          <td><a href="#organizatii">Autoevaluare formativă</a></td>
+          <td>Profil pe criterii, self-declared; poarta de intrare în rețea</td>
+          <td>ONG, școală</td>
+        </tr>
+        <tr>
+          <td><a href="#organizatii">Kit pentru autorități locale</a></td>
+          <td>Cum contractezi și monitorizezi intervenții pe standarde</td>
+          <td>Autoritate locală, DSP</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 42px;">
+      <a class="btn btn-primary" href="#organizatii" style="text-decoration: none;">Începe autoevaluarea</a>
+      <a class="btn btn-ghost" href="retea.html" style="text-decoration: none;">Înscrie-te în rețea</a>
+    </div>
+  </section>
+
+  <hr class="hr" style="height: 1px; border: 0; margin: 0; background: var(--color-divider);" />
+
+  <section style="padding: 56px 0;">
+    <p style="font-size: 14.5px; line-height: 24px; margin: 0; max-width: 72ch; color: color-mix(in srgb, var(--color-text) 70%, transparent);">Toate instrumentele de autoevaluare de pe platformă sunt non-diagnostice și confidențiale. Pentru minori, maparea rezultat → recomandare se face împreună cu specialiști, iar la orice semnal de risc înalt platforma direcționează imediat către suport uman și prima linie.</p>
+  </section>
+
+  <footer style="padding: 42px 0 70px; display: flex; flex-wrap: wrap; gap: 18px 42px; justify-content: space-between; font-size: 13px; line-height: 24px; border-top: 1px solid var(--color-divider); color: color-mix(in srgb, var(--color-text) 70%, transparent);">
+    <span>Being Ecosystem Catalyst — mockup conceptual, iulie 2026</span>
+    <span style="display: flex; gap: 24px; flex-wrap: wrap;"><a href="index.html">Acasă</a><a href="retea.html">Rețea</a><a href="index.html#standarde">Standarde</a></span>
+  </footer>
+
+</div>
+</div>
+
+<div id="panic" role="dialog" aria-modal="true" aria-label="Ajutor imediat">
+  <div style="max-width: 720px; width: 100%;">
+    <div class="panic-head" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;">
+      <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); font-feature-settings: 'tnum' 1;">Ajutor imediat</span>
+      <button type="button" class="btn btn-ghost" id="panic-close">Închide</button>
+    </div>
+    <h2 style="font-family: var(--font-heading); font-weight: 400; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.1; letter-spacing: -0.01em; margin: 28px 0 0 -0.042em;">Ești în siguranță aici. Hai să respirăm o dată, împreună.</h2>
+    <div style="display: flex; align-items: center; gap: 24px; margin-top: 42px;">
+      <div style="width: 92px; height: 92px; flex: 0 0 auto; border-radius: 50%; border: 1px solid var(--color-accent); animation: breathe 8s ease-in-out infinite;"></div>
+      <p style="font-size: 17px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);">Inspiră cât timp cercul crește. Expiră cât timp se micșorează. Nu trebuie să faci nimic altceva în acest moment.</p>
+    </div>
+    <hr class="hr" style="margin: 42px 0;" />
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+      <div class="card" style="padding: 24px;">
+        <span class="card-kicker" style="font-feature-settings: 'tnum' 1;">Telefonul Copilului</span>
+        <p style="font-family: var(--font-heading); font-weight: 400; font-size: 44px; line-height: 48px; margin: 10px 0 0; font-feature-settings: 'tnum' 1;">116 111</p>
+        <p style="font-size: 14.5px; line-height: 24px; margin: 10px 0 0; color: color-mix(in srgb, var(--color-text) 76%, transparent);">Gratuit, confidențial, non-stop. Poți suna și dacă nu știi ce să spui.</p>
+        <a class="btn btn-primary btn-block" href="tel:116111" style="margin-top: 18px; text-decoration: none;">Sună acum</a>
+      </div>
+      <div class="card" style="padding: 24px;">
+        <span class="card-kicker" style="font-feature-settings: 'tnum' 1;">Urgențe</span>
+        <p style="font-family: var(--font-heading); font-weight: 400; font-size: 44px; line-height: 48px; margin: 10px 0 0; font-feature-settings: 'tnum' 1;">112</p>
+        <p style="font-size: 14.5px; line-height: 24px; margin: 10px 0 0; color: color-mix(in srgb, var(--color-text) 76%, transparent);">Dacă tu sau altcineva sunteți în pericol imediat, sună la 112.</p>
+        <a class="btn btn-primary btn-block" href="tel:112" style="margin-top: 18px; text-decoration: none;">Sună la 112</a>
+      </div>
+    </div>
+    <p style="font-size: 14.5px; line-height: 24px; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 70%, transparent);">Platforma nu oferă diagnostic și nu înlocuiește un specialist. Dacă preferi să scrii în loc să vorbești, vom avea în curând și un canal de mesaje.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var panic = document.getElementById("panic");
+  document.querySelectorAll(".panic-open").forEach(function (b) {
+    b.addEventListener("click", function () { panic.setAttribute("data-open", ""); });
+  });
+  document.getElementById("panic-close").addEventListener("click", function () { panic.removeAttribute("data-open"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") panic.removeAttribute("data-open"); });
+})();
+</script>
+</body>
+</html>

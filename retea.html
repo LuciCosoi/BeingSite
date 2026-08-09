@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rețeaua de învățare și sprijin — Being Ecosystem Catalyst</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" />
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<style>
+  body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); text-wrap: pretty; }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent-600); }
+  html { scroll-behavior: smooth; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px); }
+  .nav { padding-inline: max(clamp(20px,5vw,72px), calc((100% - 1200px) / 2 + clamp(20px,5vw,72px))); position: sticky; top: 0; z-index: 40; background: var(--color-bg); }
+  .nav a { white-space: nowrap; }
+  .kicker { display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px; font-feature-settings: "tnum" 1; }
+  h1.display { font-family: var(--font-heading); font-weight: 400; font-size: clamp(40px, 5.2vw, 72px); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 0 -0.042em; }
+  h2.sec { font-family: var(--font-heading); font-weight: 400; font-size: 40px; line-height: 44px; letter-spacing: -0.008em; margin: 0 0 0 -0.042em; }
+  h3.sub { font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 28px; margin: 0; }
+  p.lede { font-size: 17px; line-height: 28px; max-width: 58ch; margin: 24px 0 0; color: color-mix(in srgb, var(--color-text) 82%, transparent); }
+  p.note { font-size: 15.5px; line-height: 28px; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+  .rule { height: 1px; border: 0; margin: 0; background: var(--color-divider); }
+  .split { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 42px clamp(24px, 5vw, 72px); align-items: start; margin-top: 42px; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+  #map svg { width: 100%; height: auto; display: block; }
+  #map path.county { fill: var(--color-neutral-200); stroke: var(--color-bg); stroke-width: 0.8; cursor: pointer; transition: fill 120ms ease; }
+  #map path.county.has-orgs { fill: var(--color-accent-200); }
+  #map path.county:hover { fill: var(--color-accent-300); }
+  #map path.county.selected { fill: var(--color-accent-400); stroke: var(--color-accent-800); stroke-width: 1.2; }
+  #map path.county:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .legend { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 18px; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+  .swatch { display: inline-block; width: 14px; height: 14px; border: 1px solid var(--color-divider); vertical-align: -2px; margin-right: 8px; }
+  .org { padding: 24px 0; border-top: 1px solid var(--color-divider); }
+  .org:last-child { border-bottom: 1px solid var(--color-divider); }
+  .org-offers { margin: 12px 0 0; padding: 0; list-style: none; display: flex; gap: 8px; flex-wrap: wrap; }
+  footer.page { padding: 42px 0 70px; display: flex; flex-wrap: wrap; gap: 18px 42px; justify-content: space-between; font-size: 13px; line-height: 24px; border-top: 1px solid var(--color-divider); color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+  @keyframes breathe { 0%, 100% { transform: scale(0.72); opacity: 0.5; } 50% { transform: scale(1); opacity: 1; } }
+  #panic { position: fixed; inset: 0; z-index: 90; background: var(--color-bg); overflow: auto; display: none; align-items: flex-start; justify-content: center; padding: clamp(20px, 5vw, 72px); }
+  #panic > div { margin: auto; }
+  #panic .panic-head { position: sticky; top: 0; z-index: 2; background: var(--color-bg); padding-bottom: 14px; }
+  #panic[data-open] { display: flex; }
+</style>
+<!-- HUBSPOT: după ce creezi formularul de înscriere în HubSpot (gratuit), completează
+     valorile de mai jos. portalId îl găsești în URL-ul contului (un număr);
+     formId în „Share > Embed code" al formularului. region: "eu1" pentru conturi
+     europene, "na1" pentru cele nord-americane. -->
+<script>
+  window.HUBSPOT = { region: "eu1", portalId: "", networkFormId: "" };
+</script>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand"><a href="index.html" style="color: inherit; text-decoration: none;">Being Ecosystem Catalyst</a></span>
+  <a href="index.html">Acasă</a>
+  <a href="resurse.html">Resurse</a>
+  <a href="retea.html" aria-current="page" style="color: var(--color-accent);">Rețea</a>
+  <a href="index.html#standarde">Standarde</a>
+  <button type="button" class="btn btn-primary" id="panic-open">Am nevoie de ajutor acum</button>
+</nav>
+
+<div class="wrap">
+
+  <section style="padding: 84px 0 56px;">
+    <span class="kicker">Rețeaua de învățare și sprijin</span>
+    <h1 class="display"><span style="display: block;">Cine oferă sprijin,</span><span style="display: block;">județ cu județ.</span></h1>
+    <p class="lede">Organizațiile intră în rețea după autoevaluarea pe standarde și își descriu intervențiile. Alege un județ de pe hartă pentru a vedea ce există acolo — sau înscrie-ți propria organizație.</p>
+  </section>
+
+  <hr class="rule" />
+
+  <section style="padding: 56px 0;">
+    <div class="split">
+      <div>
+        <div id="map" role="img" aria-label="Harta județelor României — selectează un județ pentru a vedea organizațiile">
+          <p class="note" id="map-status" style="margin: 0;">Se încarcă harta județelor…</p>
+        </div>
+        <div class="legend">
+          <span><span class="swatch" style="background: var(--color-accent-200);"></span>Are organizații înscrise</span>
+          <span><span class="swatch" style="background: var(--color-neutral-200);"></span>Încă niciuna</span>
+        </div>
+      </div>
+      <div>
+        <div class="field" style="margin-bottom: 28px;">
+          <label for="county-select">Sau alege județul din listă</label>
+          <select class="input" id="county-select" style="width: 100%; min-height: 36px;"></select>
+        </div>
+        <h2 id="panel-title" style="font-family: var(--font-heading); font-weight: 400; font-size: 32px; line-height: 36px; margin: 0 0 0 -0.042em;">Toată țara</h2>
+        <p class="note" id="panel-count" style="margin: 10px 0 0;"></p>
+        <div id="panel-list" style="margin-top: 28px;"></div>
+      </div>
+    </div>
+    <p style="font-size: 13px; line-height: 20px; margin: 42px 0 0; color: color-mix(in srgb, var(--color-text) 60%, transparent);">Organizațiile afișate sunt exemple de lucru pentru mockup. Geometria județelor provine din date deschise Highcharts / Natural Earth.</p>
+  </section>
+
+  <hr class="rule" />
+
+  <section style="padding: 56px 0;">
+    <h2 class="sec">Ce înseamnă „nivelul” afișat</h2>
+    <p class="lede">Transparență, nu verdict. Fiecare organizație declară singură conformitatea cu standardele; unde există o verificare umană, o marcăm distinct. Așa poți judeca singur ce ai în față.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; margin-top: 42px;">
+      <div class="card" style="padding: 24px;">
+        <span class="tag tag-outline">Autoevaluat</span>
+        <p class="note" style="margin: 14px 0 0;">Organizația a completat autoevaluarea pe standarde și își asumă rezultatul.</p>
+      </div>
+      <div class="card" style="padding: 24px;">
+        <span class="tag tag-accent">Verificat</span>
+        <p class="note" style="margin: 14px 0 0;">Autoevaluarea a fost confirmată de echipa proiectului sau de un partener.</p>
+      </div>
+      <div class="card" style="padding: 24px; border-color: var(--color-accent);">
+        <span class="tag tag-outline">Zonă sensibilă</span>
+        <p class="note" style="margin: 14px 0 0;">Pentru intervenții care primesc cazuri de risc, verificarea umană ar trebui să fie obligatorie — decizie de guvernanță încă deschisă.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section id="inscriere" style="padding: 56px 0;">
+    <h2 class="sec">Înscrie-ți organizația</h2>
+    <p class="lede">Trei pași: autoevaluarea pe standarde, descrierea intervenției, apoi apari pe hartă. Durează în jur de 30 de minute și poți salva pe parcurs.</p>
+    <div id="network-form-slot" style="max-width: 720px; margin-top: 42px;"></div>
+    <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px;">
+      <a class="btn btn-ghost" href="resurse.html#organizatii" style="text-decoration: none;">Citește standardele mai întâi</a>
+    </div>
+  </section>
+
+  <footer class="page">
+    <span>Being Ecosystem Catalyst — mockup conceptual, iulie 2026</span>
+    <span style="display: flex; gap: 24px; flex-wrap: wrap;"><a href="index.html">Acasă</a><a href="resurse.html">Resurse</a><a href="index.html#standarde">Standarde</a></span>
+  </footer>
+</div>
+
+<div id="panic" role="dialog" aria-modal="true" aria-label="Ajutor imediat">
+  <div style="max-width: 720px; width: 100%;">
+    <div class="panic-head" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;">
+      <span class="kicker" style="margin: 0;">Ajutor imediat</span>
+      <button type="button" class="btn btn-ghost" id="panic-close">Închide</button>
+    </div>
+    <h2 style="font-family: var(--font-heading); font-weight: 400; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.1; letter-spacing: -0.01em; margin: 28px 0 0 -0.042em;">Ești în siguranță aici. Hai să respirăm o dată, împreună.</h2>
+    <div style="display: flex; align-items: center; gap: 24px; margin-top: 42px;">
+      <div style="width: 92px; height: 92px; flex: 0 0 auto; border-radius: 50%; border: 1px solid var(--color-accent); animation: breathe 8s ease-in-out infinite;"></div>
+      <p style="font-size: 17px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);">Inspiră cât timp cercul crește. Expiră cât timp se micșorează. Nu trebuie să faci nimic altceva în acest moment.</p>
+    </div>
+    <hr class="hr" style="margin: 42px 0;" />
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+      <div class="card" style="padding: 24px;">
+        <span class="card-kicker">Telefonul Copilului</span>
+        <p style="font-family: var(--font-heading); font-weight: 400; font-size: 44px; line-height: 48px; margin: 10px 0 0; font-feature-settings: 'tnum' 1;">116 111</p>
+        <p style="font-size: 14.5px; line-height: 24px; margin: 10px 0 0; color: color-mix(in srgb, var(--color-text) 76%, transparent);">Gratuit, confidențial, non-stop. Poți suna și dacă nu știi ce să spui.</p>
+        <a class="btn btn-primary btn-block" href="tel:116111" style="margin-top: 18px; text-decoration: none;">Sună acum</a>
+      </div>
+      <div class="card" style="padding: 24px;">
+        <span class="card-kicker">Urgențe</span>
+        <p style="font-family: var(--font-heading); font-weight: 400; font-size: 44px; line-height: 48px; margin: 10px 0 0; font-feature-settings: 'tnum' 1;">112</p>
+        <p style="font-size: 14.5px; line-height: 24px; margin: 10px 0 0; color: color-mix(in srgb, var(--color-text) 76%, transparent);">Dacă tu sau altcineva sunteți în pericol imediat, sună la 112.</p>
+        <a class="btn btn-primary btn-block" href="tel:112" style="margin-top: 18px; text-decoration: none;">Sună la 112</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var COUNTIES = ["Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brașov","Brăila","București","Buzău","Caraș-Severin","Călărași","Cluj","Constanța","Covasna","Dâmbovița","Dolj","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Satu Mare","Sălaj","Sibiu","Suceava","Teleorman","Timiș","Tulcea","Vaslui","Vâlcea","Vrancea"];
+
+  var ORGS = {
+    "Cluj": [
+      { name: "Asociația Wello", offers: ["Programe în școală", "Nonformal"], level: "Verificat", note: "Ateliere de reglare emoțională în licee, plus formare pentru consilieri școlari." },
+      { name: "Centrul Comunitar Someș", offers: ["Consiliere"], level: "Autoevaluat", note: "Consiliere individuală gratuită pentru 14–19 ani, listă de așteptare ~3 săptămâni." }
+    ],
+    "Iași": [
+      { name: "Federația Națională a Tinerilor — filiala Iași", offers: ["Nonformal", "Voluntariat"], level: "Verificat", note: "Cluburi de tineret în 9 licee, grupuri de sprijin între egali." },
+      { name: "Asociația Pas cu Pas", offers: ["Sprijin pentru părinți"], level: "Autoevaluat", note: "Grupuri de părinți, o dată la două săptămâni, online și la sediu." }
+    ],
+    "Timiș": [
+      { name: "INIM Institute — program pilot Banat", offers: ["Programe în școală", "Consiliere"], level: "Verificat", note: "Program integrat în 4 școli, cu evaluare longitudinală." }
+    ],
+    "București": [
+      { name: "Asociația Vorbim Deschis", offers: ["Consiliere"], level: "Autoevaluat", note: "Consiliere psihologică subvenționată, 12 ședințe pe beneficiar." },
+      { name: "Hub-ul Tinerilor Sector 4", offers: ["Nonformal", "Voluntariat"], level: "Autoevaluat", note: "Spațiu deschis după-amiaza, activități conduse de tineri." },
+      { name: "DSP București — linia de sănătate mintală", offers: ["Consiliere"], level: "Verificat", note: "Trimiteri către servicii publice de psihiatrie pediatrică." }
+    ],
+    "Brașov": [
+      { name: "Asociația Împreună la Școală", offers: ["Programe în școală"], level: "Autoevaluat", note: "Curriculum SEL pentru gimnaziu, 18 ore pe an școlar." }
+    ],
+    "Dolj": [
+      { name: "Centrul Tinerilor Oltenia", offers: ["Nonformal"], level: "Autoevaluat", note: "Activități sportive și artistice cu componentă de bunăstare." }
+    ],
+    "Constanța": [
+      { name: "Asociația Ancoră", offers: ["Consiliere", "Sprijin pentru părinți"], level: "Verificat", note: "Echipă multidisciplinară, program de vară pentru adolescenți." }
+    ],
+    "Suceava": [
+      { name: "Rețeaua Școlilor Sănătoase Bucovina", offers: ["Programe în școală"], level: "Autoevaluat", note: "Formare de profesori-formatori în 12 unități de învățământ." }
+    ],
+    "Bihor": [
+      { name: "Asociația Crescem Împreună", offers: ["Sprijin pentru părinți", "Nonformal"], level: "Autoevaluat", note: "Ateliere pentru părinți de adolescenți, în oraș și în rural." }
+    ],
+    "Mureș": [
+      { name: "Centrul Multicultural pentru Tineret", offers: ["Nonformal", "Voluntariat"], level: "Autoevaluat", note: "Programe bilingve română–maghiară pentru 13–19 ani." }
+    ]
+  };
+
+  function strip(s) {
+    return (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[ăâîșțĂÂÎȘȚ]/g, "").toLowerCase().replace(/[^a-z]/g, "");
+  }
+  var byKey = {};
+  COUNTIES.forEach(function (c) { byKey[strip(c)] = c; });
+  // the map data ships English/variant names for a few counties — alias them onto the Romanian ones
+  var ALIASES = { bucharest: "București", bucuresti: "București", "bucurestimunicipiul": "București", ilfov: "Ilfov", satumare: "Satu Mare", salaj: "Sălaj", brailamunicipiul: "Brăila" };
+  Object.keys(ALIASES).forEach(function (k) { byKey[k] = ALIASES[k]; });
+  function countyOf(feature) {
+    var raw = (feature && feature.properties && feature.properties.name) || "";
+    return byKey[strip(raw)] || raw;
+  }
+
+  // ——— county select controls ———
+  var select = document.getElementById("county-select");
+  var optAll = document.createElement("option");
+  optAll.value = ""; optAll.textContent = "Toată țara";
+  select.appendChild(optAll);
+  COUNTIES.forEach(function (c) {
+    var o = document.createElement("option"); o.value = c; o.textContent = c; select.appendChild(o);
+  });
+
+  var title = document.getElementById("panel-title");
+  var count = document.getElementById("panel-count");
+  var list = document.getElementById("panel-list");
+
+  function tagClass(level) { return level === "Verificat" ? "tag tag-accent" : "tag tag-outline"; }
+
+  function render(county) {
+    var items;
+    if (county) { items = (ORGS[county] || []).map(function (o) { return [county, o]; }); }
+    else {
+      items = [];
+      Object.keys(ORGS).forEach(function (c) { ORGS[c].forEach(function (o) { items.push([c, o]); }); });
+    }
+    title.textContent = county || "Toată țara";
+    count.textContent = items.length === 0
+      ? "Nicio organizație înscrisă încă în acest județ."
+      : items.length + (items.length === 1 ? " organizație înscrisă" : " organizații înscrise");
+    list.innerHTML = "";
+    if (items.length === 0) {
+      var empty = document.createElement("div");
+      empty.innerHTML = '<p class="note" style="margin: 0 0 18px;">Dacă activați aici, sunteți primii. Înscrierea începe cu autoevaluarea pe standarde.</p><a class="btn btn-primary" href="#inscriere" style="text-decoration: none;">Înscrie organizația</a>';
+      list.appendChild(empty);
+      return;
+    }
+    items.forEach(function (pair) {
+      var c = pair[0], o = pair[1];
+      var el = document.createElement("article");
+      el.className = "org";
+      var offers = o.offers.map(function (t) { return '<li><span class="tag tag-neutral">' + t + "</span></li>"; }).join("");
+      el.innerHTML =
+        '<div style="display: flex; gap: 14px; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">' +
+          '<h3 class="sub">' + o.name + "</h3>" +
+          '<span class="' + tagClass(o.level) + '">' + o.level + "</span>" +
+        "</div>" +
+        (county ? "" : '<p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 8px 0 0; color: color-mix(in srgb, var(--color-text) 60%, transparent);">' + c + "</p>") +
+        '<p class="note" style="margin: 8px 0 0;">' + o.note + "</p>" +
+        '<ul class="org-offers">' + offers + "</ul>";
+      list.appendChild(el);
+    });
+  }
+
+  var selected = null;
+  function selectCounty(county) {
+    selected = county || null;
+    select.value = county || "";
+    if (window.__paths) {
+      window.__paths.attr("class", function (d) {
+        var n = countyOf(d);
+        return "county" + ((ORGS[n] && ORGS[n].length) ? " has-orgs" : "") + (n === selected ? " selected" : "");
+      });
+    }
+    render(selected);
+  }
+  select.addEventListener("change", function () { selectCounty(select.value); });
+  render(null);
+
+  // ——— the map: real county geometry, loaded not drawn ———
+  var status = document.getElementById("map-status");
+  fetch("https://code.highcharts.com/mapdata/countries/ro/ro-all.geo.json")
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (geo) {
+      var features = geo.features.filter(function (f) { return f.geometry; });
+      // coordinate units: lon/lat stay small, projected metres do not
+      var max = 0;
+      d3.geoStream({ type: "FeatureCollection", features: features }, {
+        point: function (x, y) { max = Math.max(max, Math.abs(x), Math.abs(y)); },
+        lineStart: function () {}, lineEnd: function () {},
+        polygonStart: function () {}, polygonEnd: function () {}, sphere: function () {}
+      });
+      var w = 720, h = 460;
+      var projection = max > 400
+        ? d3.geoIdentity().reflectY(true).fitSize([w, h], { type: "FeatureCollection", features: features })
+        : d3.geoMercator().fitSize([w, h], { type: "FeatureCollection", features: features });
+      var path = d3.geoPath(projection);
+      status.remove();
+      var svg = d3.select("#map").append("svg")
+        .attr("viewBox", "0 0 " + w + " " + h)
+        .attr("preserveAspectRatio", "xMidYMid meet");
+      window.__paths = svg.selectAll("path").data(features).join("path")
+        .attr("d", path)
+        .attr("tabindex", 0)
+        .attr("role", "button")
+        .attr("aria-label", function (d) { return countyOf(d); })
+        .on("click", function (e, d) { selectCounty(countyOf(d)); })
+        .on("keydown", function (e, d) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectCounty(countyOf(d)); }
+        });
+      window.__paths.append("title").text(function (d) {
+        var n = countyOf(d);
+        var k = (ORGS[n] || []).length;
+        return n + " — " + (k ? k + " organizații" : "nicio organizație încă");
+      });
+      selectCounty(null);
+    })
+    .catch(function () {
+      status.textContent = "Harta nu s-a putut încărca acum (fără conexiune). Folosește lista de județe din dreapta — funcționează identic.";
+    });
+
+  // ——— panic overlay ———
+  var panic = document.getElementById("panic");
+  document.getElementById("panic-open").addEventListener("click", function () { panic.setAttribute("data-open", ""); });
+  document.getElementById("panic-close").addEventListener("click", function () { panic.removeAttribute("data-open"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") panic.removeAttribute("data-open"); });
+
+  // ——— înscriere în rețea: formular HubSpot sau mesaj provizoriu ———
+  var cfg = window.HUBSPOT || {};
+  var slot = document.getElementById("network-form-slot");
+  if (cfg.portalId && cfg.networkFormId) {
+    var s = document.createElement("script");
+    s.src = (cfg.region === "na1" ? "https://js.hsforms.net" : "https://js-" + cfg.region + ".hsforms.net") + "/forms/embed/v2.js";
+    s.onload = function () {
+      hbspt.forms.create({ region: cfg.region, portalId: cfg.portalId, formId: cfg.networkFormId, target: "#network-form-slot" });
+    };
+    document.head.appendChild(s);
+  } else {
+    slot.innerHTML = '<p class="note" style="margin: 0; padding: 18px 24px; border: 1px solid var(--color-divider);">Formularul de înscriere se activează la lansare.</p>';
+  }
+})();
+</script>
+</body>
+</html>
