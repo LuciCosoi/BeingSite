@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" role="img" aria-label="Grand Challenges Canada (wordmark provizoriu)">
+<rect width="500" height="200" fill="none"/>
+<text x="250" y="88" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="4" fill="#201f1d">GRAND CHALLENGES</text>
+<text x="250" y="130" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="10" fill="#201f1d">CANADA</text>
+<line x1="205" y1="152" x2="295" y2="152" stroke="#b68235" stroke-width="1.5"/>
+</svg>

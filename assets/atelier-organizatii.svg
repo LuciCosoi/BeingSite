@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Ilustrație: un atelier de lucru cu organizații partenere">
+  <defs>
+    <clipPath id="frame"><rect width="800" height="1000"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="800" height="1000" fill="#eae9e9"/>
+    <!-- faint paper grain lines -->
+    <g stroke="#dcd9d6" stroke-width="1">
+      <line x1="0" y1="140" x2="800" y2="140"/>
+      <line x1="0" y1="860" x2="800" y2="860"/>
+    </g>
+    <!-- concentric working-circle: the table, seen from above -->
+    <g fill="none" stroke="#b68235">
+      <circle cx="400" cy="470" r="250" stroke-width="1" opacity="0.35"/>
+      <circle cx="400" cy="470" r="196" stroke-width="1" opacity="0.55"/>
+      <circle cx="400" cy="470" r="118" stroke-width="1.5"/>
+    </g>
+    <!-- participants around the table: filled and outlined marks -->
+    <g>
+      <circle cx="400" cy="228" r="17" fill="#b68235"/>
+      <circle cx="571" cy="299" r="17" fill="none" stroke="#201f1d" stroke-width="1.5"/>
+      <circle cx="642" cy="470" r="17" fill="none" stroke="#201f1d" stroke-width="1.5"/>
+      <circle cx="571" cy="641" r="17" fill="#b68235"/>
+      <circle cx="400" cy="712" r="17" fill="none" stroke="#201f1d" stroke-width="1.5"/>
+      <circle cx="229" cy="641" r="17" fill="none" stroke="#201f1d" stroke-width="1.5"/>
+      <circle cx="158" cy="470" r="17" fill="#b68235"/>
+      <circle cx="229" cy="299" r="17" fill="none" stroke="#201f1d" stroke-width="1.5"/>
+    </g>
+    <!-- threads of conversation crossing the table -->
+    <g stroke="#201f1d" stroke-width="0.8" opacity="0.5">
+      <line x1="400" y1="245" x2="571" y2="624"/>
+      <line x1="229" y1="316" x2="642" y2="470"/>
+      <line x1="158" y1="470" x2="571" y2="316"/>
+      <line x1="229" y1="624" x2="400" y2="245"/>
+    </g>
+    <g stroke="#b68235" stroke-width="1.2">
+      <line x1="158" y1="470" x2="642" y2="470"/>
+      <line x1="400" y1="245" x2="400" y2="695"/>
+    </g>
+    <!-- the shared centre -->
+    <circle cx="400" cy="470" r="9" fill="#201f1d"/>
+    <!-- colophon marks -->
+    <g fill="none" stroke="#b68235" stroke-width="1">
+      <path d="M 60 60 h 56 M 60 60 v 56"/>
+      <path d="M 740 940 h -56 M 740 940 v -56"/>
+    </g>
+    <!-- caption rule -->
+    <line x1="330" y1="920" x2="470" y2="920" stroke="#b68235" stroke-width="1.5"/>
+  </g>
+</svg>

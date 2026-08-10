@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" role="img" aria-label="Federația Națională a Tinerilor (wordmark provizoriu)">
+<rect width="500" height="200" fill="none"/>
+<text x="250" y="102" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="62" letter-spacing="16" fill="#201f1d">FNT</text>
+<text x="250" y="140" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" letter-spacing="1.5" fill="#201f1d">Federația Națională a Tinerilor</text>
+<line x1="150" y1="42" x2="350" y2="42" stroke="#b68235" stroke-width="1"/>
+</svg>

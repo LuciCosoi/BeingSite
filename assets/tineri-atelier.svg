@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Ilustrație: tineri într-un atelier">
+  <defs>
+    <clipPath id="frame2"><rect width="1200" height="900"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame2)">
+    <rect width="1200" height="900" fill="#eae9e9"/>
+    <!-- rising arcs: a morning, a room, a window of light -->
+    <g fill="none" stroke="#b68235">
+      <path d="M 100 780 A 500 500 0 0 1 1100 780" stroke-width="1" opacity="0.3"/>
+      <path d="M 200 780 A 400 400 0 0 1 1000 780" stroke-width="1" opacity="0.5"/>
+      <path d="M 300 780 A 300 300 0 0 1 900 780" stroke-width="1.3" opacity="0.8"/>
+    </g>
+    <line x1="60" y1="780" x2="1140" y2="780" stroke="#201f1d" stroke-width="1" opacity="0.6"/>
+    <!-- the group: circles of different sizes, sitting on the ground line -->
+    <g>
+      <circle cx="330" cy="726" r="54" fill="none" stroke="#201f1d" stroke-width="1.5"/>
+      <circle cx="452" cy="742" r="38" fill="#b68235"/>
+      <circle cx="576" cy="716" r="64" fill="none" stroke="#b68235" stroke-width="1.5"/>
+      <circle cx="704" cy="748" r="32" fill="none" stroke="#201f1d" stroke-width="1.5"/>
+      <circle cx="820" cy="730" r="50" fill="none" stroke="#201f1d" stroke-width="1.5"/>
+      <circle cx="925" cy="752" r="28" fill="#b68235" opacity="0.85"/>
+    </g>
+    <!-- lines of talk between them -->
+    <g stroke="#201f1d" stroke-width="0.8" opacity="0.45">
+      <path d="M 360 680 Q 470 600 560 660" fill="none"/>
+      <path d="M 610 660 Q 710 610 800 690" fill="none"/>
+      <path d="M 470 712 Q 580 650 690 724" fill="none"/>
+    </g>
+    <!-- one thought that leaves the room -->
+    <path d="M 590 656 Q 640 420 900 330" fill="none" stroke="#b68235" stroke-width="1.2"/>
+    <circle cx="900" cy="330" r="10" fill="#b68235"/>
+    <g fill="none" stroke="#b68235" stroke-width="1" opacity="0.6">
+      <circle cx="900" cy="330" r="24"/>
+      <circle cx="900" cy="330" r="42"/>
+    </g>
+    <!-- colophon marks -->
+    <g fill="none" stroke="#b68235" stroke-width="1">
+      <path d="M 56 56 h 56 M 56 56 v 56"/>
+      <path d="M 1144 844 h -56 M 1144 844 v -56"/>
+    </g>
+  </g>
+</svg>

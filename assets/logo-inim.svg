@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" role="img" aria-label="INIM Institute (wordmark provizoriu)">
+<rect width="500" height="200" fill="none"/>
+<text x="250" y="102" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="60" letter-spacing="14" fill="#201f1d">INIM</text>
+<text x="250" y="144" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" letter-spacing="9" fill="#201f1d">INSTITUTE</text>
+<circle cx="250" cy="52" r="5" fill="#b68235"/>
+</svg>
